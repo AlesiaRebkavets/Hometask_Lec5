@@ -21,17 +21,27 @@ public class FactoryWorkers
         Console.WriteLine(displayedComment + ' ' + a.Length);
     }
 
-    public static void OuptutADelimiter()                         // output of row delimiter
+    public static void OutputADelimiter()                         // output of row delimiter
     {
         Console.WriteLine("************************");
         Console.WriteLine();
     }
 
-    public static string OutputWorkerData(Person worker)
+    public static string OutputSingleWorkerData(Person worker)        // returns personal data of the specific worker for further output in console
     {
         return "Imya sotrudnika: " + worker.GetName() + "\nFamiliya sotrudnika: " + worker.GetLastName() + "\nVosrast sotrudnika: " + worker.GetAge() +
             "\nPol sotrudnika: " + worker.GetSex() + "\nRazriad sotrudnika: " + worker.GetSkillLevel() + "\nKolichestvo dniej progulov sotrudnika: " + worker.GetAbsenseFromWorkInDays() +
             "\nUvolen: " + worker.IsFired() + "\nPoluchil povestku: " + worker.GetPoluchilPovestkuValue();       
+    }
+
+    public static string OutputWorkersData(Person[] workers, byte numberOfArrayElements)      // returns personal data all the workers for further output in console
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++)
+        {
+            s += OutputSingleWorkerData(workers[i]) + "\n************************" + "\n";
+        }
+        return s;
     }
 
 }

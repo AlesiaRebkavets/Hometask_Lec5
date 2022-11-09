@@ -27,7 +27,14 @@ namespace Factory
             workers[4].SetMainData("Fedor", "Kosyakov", 45, 'm', 7, 10, false, false);
 
             FactoryWorkers.OuptufOfArayLength("Kolichectvo rabotnikov v otdele =", workers);  // output the array length
-            FactoryWorkers.OuptutADelimiter();       // output of row delimiter
+            FactoryWorkers.OutputADelimiter();       // output a row delimiter
+
+            Console.WriteLine(FactoryWorkers.OutputSingleWorkerData(workers[1]));     // output personal data of the specific worker 
+
+            FactoryWorkers.OutputADelimiter();       // output a row delimiter
+
+            Console.WriteLine(FactoryWorkers.OutputWorkersData(workers, 5));          // output personal data of all the workers 
+
 
             //for (int i = 0; i < 5; i++)                                                     // output of array elements data
             //{
@@ -42,7 +49,7 @@ namespace Factory
             //    Console.WriteLine("************************");
             //}
 
-            Console.WriteLine(FactoryWorkers.OutputWorkerData(workers[1]));
+
 
             for (byte i = 0; i < 5; i++)                                                     // Dismiss employees and display their names
             {
