@@ -26,24 +26,23 @@ namespace Factory
             workers[3].SetMainData("Dariya", "Sidorova", 41, 'f', 7, 8, false, false);
             workers[4].SetMainData("Fedor", "Kosyakov", 45, 'm', 7, 10, false, false);
 
-            FactoryWorkers.OuptufOfArayLength("Kolichectvo rabotnikov v otdele =", workers);
-            //Console.WriteLine("Kolichectvo rabotnikov v otdele = " + workers.Length);  // output the array length
-            //Console.WriteLine("************************");
-            FactoryWorkers.OuptutADelimiter();
-            
+            FactoryWorkers.OuptufOfArayLength("Kolichectvo rabotnikov v otdele =", workers);  // output the array length
+            FactoryWorkers.OuptutADelimiter();       // output of row delimiter
 
-            for (int i = 0; i < 5; i++)                                                     // output of array elements data
-            {
-                Console.WriteLine("Imya sotrudnika: " + workers[i].GetName());
-                Console.WriteLine("Familiya sotrudnika: " + workers[i].GetLastName());
-                Console.WriteLine("Vosrast sotrudnika: " + workers[i].GetAge());
-                Console.WriteLine("Pol sotrudnika: " + workers[i].GetSex());
-                Console.WriteLine("Razriad sotrudnika: " + workers[i].GetSkillLevel());
-                Console.WriteLine("Kolichestvo dniej progulov sotrudnika: " + workers[i].GetAbsenseFromWorkInDays());
-                Console.WriteLine("Uvolen: " + workers[i].IsFired());
-                Console.WriteLine("Poluchil povestku: " + workers[i].GetPoluchilPovestkuValue());
-                Console.WriteLine("************************");
-            }
+            //for (int i = 0; i < 5; i++)                                                     // output of array elements data
+            //{
+            //    Console.WriteLine("Imya sotrudnika: " + workers[i].GetName());
+            //    Console.WriteLine("Familiya sotrudnika: " + workers[i].GetLastName());
+            //    Console.WriteLine("Vosrast sotrudnika: " + workers[i].GetAge());
+            //    Console.WriteLine("Pol sotrudnika: " + workers[i].GetSex());
+            //    Console.WriteLine("Razriad sotrudnika: " + workers[i].GetSkillLevel());
+            //    Console.WriteLine("Kolichestvo dniej progulov sotrudnika: " + workers[i].GetAbsenseFromWorkInDays());
+            //    Console.WriteLine("Uvolen: " + workers[i].IsFired());
+            //    Console.WriteLine("Poluchil povestku: " + workers[i].GetPoluchilPovestkuValue());
+            //    Console.WriteLine("************************");
+            //}
+
+            Console.WriteLine(FactoryWorkers.OutputWorkerData(workers[1]));
 
             for (byte i = 0; i < 5; i++)                                                     // Dismiss employees and display their names
             {
