@@ -26,8 +26,11 @@ namespace Factory
             workers[3].SetMainData("Dariya", "Sidorova", 41, 'f', 7, 8, false, false);
             workers[4].SetMainData("Fedor", "Kosyakov", 45, 'm', 7, 10, false, false);
 
-            Console.WriteLine("Kolichectvo rabotnikov v otdele = " + workers.Length);  // output the array length
-            Console.WriteLine("************************");
+            FactoryWorkers.OuptufOfArayLength("Kolichectvo rabotnikov v otdele =", workers);
+            //Console.WriteLine("Kolichectvo rabotnikov v otdele = " + workers.Length);  // output the array length
+            //Console.WriteLine("************************");
+            FactoryWorkers.OuptutADelimiter();
+            
 
             for (int i = 0; i < 5; i++)                                                     // output of array elements data
             {

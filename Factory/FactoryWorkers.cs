@@ -16,9 +16,14 @@ public class FactoryWorkers
         return a;
     }       
     
+    public static void OuptufOfArayLength(String displayedComment, Person[] a)
+    {
+        Console.WriteLine(displayedComment + ' ' + a.Length);
+    }
 
-
-
-    
-
+    public static void OuptutADelimiter()
+    {
+        Console.WriteLine("************************");
+        Console.WriteLine();
+    }
 }
