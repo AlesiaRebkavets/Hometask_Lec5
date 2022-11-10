@@ -30,37 +30,15 @@ namespace Factory
             FactoryWorkers.OutputADelimiter();       // output a row delimiter
 
             Console.WriteLine(FactoryWorkers.OutputSingleWorkerData(workers[1]));     // output personal data of the specific worker 
-
             FactoryWorkers.OutputADelimiter();       // output a row delimiter
 
             Console.WriteLine(FactoryWorkers.OutputWorkersData(workers, 5));          // output personal data of all the workers 
 
+            Console.WriteLine(FactoryWorkers.DismissASingleEmploee(workers[1]));      // Dismiss a single employee if he/she has days of absense and display his/her name
+            FactoryWorkers.OutputADelimiter();
 
-            //for (int i = 0; i < 5; i++)                                                     // output of array elements data
-            //{
-            //    Console.WriteLine("Imya sotrudnika: " + workers[i].GetName());
-            //    Console.WriteLine("Familiya sotrudnika: " + workers[i].GetLastName());
-            //    Console.WriteLine("Vosrast sotrudnika: " + workers[i].GetAge());
-            //    Console.WriteLine("Pol sotrudnika: " + workers[i].GetSex());
-            //    Console.WriteLine("Razriad sotrudnika: " + workers[i].GetSkillLevel());
-            //    Console.WriteLine("Kolichestvo dniej progulov sotrudnika: " + workers[i].GetAbsenseFromWorkInDays());
-            //    Console.WriteLine("Uvolen: " + workers[i].IsFired());
-            //    Console.WriteLine("Poluchil povestku: " + workers[i].GetPoluchilPovestkuValue());
-            //    Console.WriteLine("************************");
-            //}
-
-
-
-            for (byte i = 0; i < 5; i++)                                                     // Dismiss employees and display their names
-            {
-                workers[i].Fire(workers[i].GetAbsenseFromWorkInDays());
-                if (workers[i].IsFired())
-                {
-                    Console.WriteLine("Sotrudnik " + workers[i].GetLastName() + " " + workers[i].GetName() + " uvolen za " + workers[i].GetAbsenseFromWorkInDays() + " dniej progula");
-                }
-            }
-
-            Console.WriteLine("************************");
+            Console.WriteLine(FactoryWorkers.DismissEmploees(workers, 5));            // Dismiss all the employees if they have days of absense and display their names
+            FactoryWorkers.OutputADelimiter();
 
             for (byte i = 0; i < 5; i++)                                                     // россия пришла на завод :(
             {

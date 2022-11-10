@@ -44,4 +44,23 @@ public class FactoryWorkers
         return s;
     }
 
+    public static string DismissASingleEmploee(Person worker)                           // fire an emploee if AbsenseFromWorkInDays is not null and return the worker's data
+    {
+        worker.Fire(worker.GetAbsenseFromWorkInDays());
+        if (worker.IsFired())
+        {
+            return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " uvolen za " + worker.GetAbsenseFromWorkInDays() + " dniej progula"; ;
+        }
+        else return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " nie uvolen, progulov " + worker.GetAbsenseFromWorkInDays() + " dniej";
+    }
+
+    public static string DismissEmploees(Person[] workers, byte numberOfArrayElements)    // fire all the emploees if theis AbsenseFromWorkInDays is not null and return the workers' data
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++)
+        {
+            s += DismissASingleEmploee(workers[i]) + "\n";
+        }
+        return s;
+    }
 }
