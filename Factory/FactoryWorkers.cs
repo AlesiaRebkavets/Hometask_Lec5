@@ -63,4 +63,25 @@ public class FactoryWorkers
         }
         return s;
     }
+
+    public static string ToWarASingleEmploee(Person worker)                                                    // выдает повестку одному работнику мужского пола и возвращает его имя
+    {
+         worker.Voenkom(worker.GetSex());
+         if (worker.GetPoluchilPovestkuValue())
+         {
+         return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " poluchil povestku ";
+         } else return "Sotrudnica " + worker.GetLastName() + " " + worker.GetName() + " nie poluchila povestku. Poka chto. ";
+
+    }
+
+    public static string ToWarAllTheEmploees(Person[] workers, byte numberOfArrayElements)                       // выдает повестки всем работникам мужского пола и возвращает их имена
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++) 
+        { 
+            s += ToWarASingleEmploee(workers[i]) + "\n";
+        }
+        return s;
+    }
+
 }

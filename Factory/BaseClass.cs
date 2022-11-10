@@ -40,15 +40,12 @@ namespace Factory
             Console.WriteLine(FactoryWorkers.DismissEmploees(workers, 5));            // Dismiss all the employees if they have days of absense and display their names
             FactoryWorkers.OutputADelimiter();
 
-            for (byte i = 0; i < 5; i++)                                                     // россия пришла на завод :(
-            {
-                workers[i].Voenkom(workers[i].GetSex());
-                if (workers[i].GetPoluchilPovestkuValue())
-                {
-                    Console.WriteLine("Sotrudnik " + workers[i].GetLastName() + " " + workers[i].GetName() + " poluchil povestku ");
-                }
-            }
-         
+            Console.WriteLine(FactoryWorkers.ToWarASingleEmploee(workers[0]));        // россия пришла на завод :(        дать повестку одному работнику
+            FactoryWorkers.OutputADelimiter();
+
+            Console.WriteLine(FactoryWorkers.ToWarAllTheEmploees(workers, 5));         //  раздать повестки всем работникам мужского пола
+            FactoryWorkers.OutputADelimiter();
+                     
         }
     }
 }
