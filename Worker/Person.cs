@@ -8,11 +8,11 @@
         private char sex;
         private byte skillLevel;
         private byte absenseFromWorkInDays;
-        private Boolean fired;
-        private Boolean poluchilPovestku;
+        private bool fired;
+        private bool poluchilPovestku;
 
 
-        public Person(string name, string lastName, byte age, char sex, byte skillLevel, byte absenseFromWorkInDays, Boolean fired, Boolean poluchilPovestku)
+        public Person(string name, string lastName, byte age, char sex, byte skillLevel, byte absenseFromWorkInDays, bool fired, bool poluchilPovestku)
         {
             this.name = name;                           // set initial object values data
             this.lastName = lastName;
@@ -24,7 +24,7 @@
             this.poluchilPovestku = poluchilPovestku;
         }
 
-        public void SetMainData(string name, string last_name, byte age, char sex, byte skill_level, byte absense_from_work_in_days, Boolean fired, Boolean poluchil_povestku)
+        public void SetMainData(string name, string last_name, byte age, char sex, byte skill_level, byte absense_from_work_in_days, bool fired, bool poluchil_povestku)
         {
             this.name = name;                             // set object values data
             this.lastName = last_name;
@@ -66,12 +66,12 @@
             return this.absenseFromWorkInDays;
         }
 
-        public Boolean IsFired()                         // get 'fired' object value
+        public bool IsFired()                         // get 'fired' object value
         {
             return this.fired;
         }
 
-        public Boolean GetPoluchilPovestkuValue()         // get 'poluchil_povestku' object value
+        public bool GetPoluchilPovestkuValue()         // get 'poluchil_povestku' object value
         {
             return this.poluchilPovestku;
         }

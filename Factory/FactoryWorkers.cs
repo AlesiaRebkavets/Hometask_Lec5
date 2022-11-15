@@ -6,7 +6,7 @@ using Worker;
 
 public class FactoryWorkers
 {
-    public static Person[] ArrayElementInitialization(byte numberOfArrayElements, string name, string lastName, byte age, char sex, byte skillLevel, byte absenseFromWorkInDays, Boolean fired, Boolean poluchilPovestku)
+    public static Person[] ArrayElementInitialization(byte numberOfArrayElements, string name, string lastName, byte age, char sex, byte skillLevel, byte absenseFromWorkInDays, bool fired, bool poluchilPovestku)
     {
         Person[] a = new Person[numberOfArrayElements];                              // array elements initialization method
         for (byte i = 0; i < numberOfArrayElements; i++)
@@ -16,7 +16,7 @@ public class FactoryWorkers
         return a;
     }
 
-    public static void OuptufOfArayLength(String displayedComment, Person[] a)   // output an array length (number of workers)
+    public static void OuptufOfArayLength(string displayedComment, Person[] a)   // output an array length (number of workers)
     {
         Console.WriteLine(displayedComment + ' ' + a.Length);
     }
