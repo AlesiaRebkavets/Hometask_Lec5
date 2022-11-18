@@ -1,74 +1,87 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Diagnostics.SymbolStore;
+using System.Reflection.Metadata.Ecma335;
 using Worker;
 
 public class FactoryWorkers
-{     
-    static void Main()
+{
+    public static Person[] ArrayElementInitialization(byte numberOfArrayElements, string name, string lastName, byte age, char sex, byte skillLevel, byte absenseFromWorkInDays, bool fired, bool poluchilPovestku)
     {
-        Person[] worker = new Person[5];
-
-        for (int i = 0; i < 5; i++)                       // array element initialization
+        Person[] a = new Person[numberOfArrayElements];                              // array elements initialization method
+        for (byte i = 0; i < numberOfArrayElements; i++)
         {
-            worker[i] = new Person();
+            a[i] = new Person(name, lastName, age, sex, skillLevel, absenseFromWorkInDays, fired, poluchilPovestku);
         }
+        return a;
+    }
 
-        worker[0].SetMainData("Vasiliy", "Pupkin", 47, 'm', 6, 3, false, false);   // set values to array elements
-        worker[1].SetMainData("Anna", "Petrova", 38, 'f', 7, 0, false, false);
-        worker[2].SetMainData("Ivan", "Ivanov", 30, 'm', 4, 0, false, false);
-        worker[3].SetMainData("Dariya", "Sidorova", 41, 'f', 7, 8, false, false);
-        worker[4].SetMainData("Fedor", "Kosyakov", 45, 'm', 7, 10, false, false);
-  
-        Console.WriteLine("Kolichectvo rabotnikov v otdele = " + worker.Length);  // output the array length
+    public static void OuptufOfArayLength(string displayedComment, Person[] a)   // output an array length (number of workers)
+    {
+        Console.WriteLine(displayedComment + ' ' + a.Length);
+    }
+
+    public static void OutputADelimiter()                         // output of row delimiter
+    {
         Console.WriteLine("************************");
+        Console.WriteLine();
+    }
 
-        for (int i = 0; i < 5; i++)                                                     // output of array elements data
+    public static string OutputSingleWorkerData(Person worker)        // returns personal data of the specific worker for further output in console
+    {
+        return "Imya sotrudnika: " + worker.GetName() + "\nFamiliya sotrudnika: " + worker.GetLastName() + "\nVosrast sotrudnika: " + worker.GetAge() +
+            "\nPol sotrudnika: " + worker.GetSex() + "\nRazriad sotrudnika: " + worker.GetSkillLevel() + "\nKolichestvo dniej progulov sotrudnika: " + worker.GetAbsenseFromWorkInDays() +
+            "\nUvolen: " + worker.IsFired() + "\nPoluchil povestku: " + worker.GetPoluchilPovestkuValue();       
+    }
+
+    public static string OutputWorkersData(Person[] workers, byte numberOfArrayElements)      // returns personal data all the workers for further output in console
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++)
         {
-            Console.WriteLine("Imya sotrudnika: " + worker[i].GetName());
-            Console.WriteLine("Familiya sotrudnika: " + worker[i].GetLastName());
-            Console.WriteLine("Vosrast sotrudnika: " + worker[i].GetAge());
-            Console.WriteLine("Pol sotrudnika: " + worker[i].GetSex());
-            Console.WriteLine("Razriad sotrudnika: " + worker[i].GetSkillLevel());
-            Console.WriteLine("Kolichestvo dniej progulov sotrudnika: " + worker[i].GetAbsenseFromWorkInDays());
-            Console.WriteLine("Uvolen: " + worker[i].IsFired());
-            Console.WriteLine("Poluchil povestku: " + worker[i].GetPoluchilPovestkuValue());
-            Console.WriteLine("************************");
+            s += OutputSingleWorkerData(workers[i]) + "\n************************" + "\n";
         }
+        return s;
+    }
 
-        for (byte i = 0; i < 5; i++)                                                     // Dismiss employees and display their names
+    public static string DismissASingleEmploee(Person worker)                           // fire an emploee if AbsenseFromWorkInDays is not null and return the worker's data
+    {
+        worker.Fire(worker.GetAbsenseFromWorkInDays());
+        if (worker.IsFired())
         {
-            worker[i].Fire(worker[i].GetAbsenseFromWorkInDays());
-            if (worker[i].IsFired())
-            {
-                Console.WriteLine("Sotrudnik " + worker[i].GetLastName() + " " + worker[i].GetName() + " uvolen za " + worker[i].GetAbsenseFromWorkInDays() + " dniej progula");
-            }
+            return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " uvolen za " + worker.GetAbsenseFromWorkInDays() + " dniej progula"; ;
         }
+        else return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " nie uvolen, progulov " + worker.GetAbsenseFromWorkInDays() + " dniej";
+    }
 
-        Console.WriteLine("************************");
-
-        for (byte i = 0; i < 5; i++)                                                     // россия пришла на завод :(
+    public static string DismissEmploees(Person[] workers, byte numberOfArrayElements)    // fire all the emploees if theis AbsenseFromWorkInDays is not null and return the workers' data
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++)
         {
-            worker[i].Voenkom(worker[i].GetSex());
-            if (worker[i].GetPoluchilPovestkuValue())
-            {
-                Console.WriteLine("Sotrudnik " + worker[i].GetLastName() + " " + worker[i].GetName() + " poluchil povestku ");
-            }
+            s += DismissASingleEmploee(workers[i]) + "\n";
         }
+        return s;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static string ToWarASingleEmploee(Person worker)                                                    // выдает повестку одному работнику мужского пола и возвращает его имя
+    {
+         worker.Voenkom(worker.GetSex());
+         if (worker.GetPoluchilPovestkuValue())
+         {
+         return "Sotrudnik " + worker.GetLastName() + " " + worker.GetName() + " poluchil povestku ";
+         } else return "Sotrudnica " + worker.GetLastName() + " " + worker.GetName() + " nie poluchila povestku. Poka chto. ";
 
     }
+
+    public static string ToWarAllTheEmploees(Person[] workers, byte numberOfArrayElements)                       // выдает повестки всем работникам мужского пола и возвращает их имена
+    {
+        string s = "";
+        for (byte i = 0; i < numberOfArrayElements; i++) 
+        { 
+            s += ToWarASingleEmploee(workers[i]) + "\n";
+        }
+        return s;
+    }
+
 }
